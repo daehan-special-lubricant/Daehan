@@ -43,10 +43,12 @@ const DaehanSpecialtyOil = () => {
     { title: 'Relation',     items: ['공지사항', '보도자료', '네이버 스토어', '고객문의'] },
   ];
 
+  const BASE = import.meta.env.BASE_URL;
+
   const heroSlides = [
-    { title: 'New Quantum Leap',          subtitle: '어떤 내용을 작성할까요',  desc: '한 차원 높은 비전을 실현합니다',  bgImage: '/images/slide1.jpg' },
-    { title: 'Professional Distribution', subtitle: '전문 윤활유 도소매 유통',   desc: '신뢰할 수 있는 파트너',            bgImage: '/images/slide2.jpg' },
-    { title: 'Online Shopping',           subtitle: '네이버 스마트스토어',        desc: '언제 어디서나 편리하게',            bgImage: '/images/slide3.jpg' },
+    { title: 'New Quantum Leap',          subtitle: '어떤 내용을 작성할까요',  desc: '한 차원 높은 비전을 실현합니다',  bgImage: `${BASE}images/slide1.jpg` },
+    { title: 'Professional Distribution', subtitle: '전문 윤활유 도소매 유통',   desc: '신뢰할 수 있는 파트너',            bgImage: `${BASE}images/slide2.jpg` },
+    { title: 'Online Shopping',           subtitle: '네이버 스마트스토어',        desc: '언제 어디서나 편리하게',            bgImage: `${BASE}images/slide3.jpg` },
   ];
 
   /* ─── 공통 스타일 헬퍼 ─── */
@@ -72,7 +74,7 @@ const DaehanSpecialtyOil = () => {
 
           {/* 로고 */}
           <a href="/" style={{ display: 'flex', alignItems: 'center' }}>
-            <img src="/images/logo.png" alt="대한특수유 로고" style={{ height: '120px', width: 'auto' }} />
+            <img src={`${BASE}images/logo.png`} alt="대한특수유 로고" style={{ height: '120px', width: 'auto' }} />
           </a>
 
           {/* 메인 네비 */}
