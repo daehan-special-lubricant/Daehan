@@ -3,18 +3,18 @@ import { ChevronDown, Menu, X, Phone, Mail, MapPin, Search, Globe, ShoppingBag, 
 
 /* ─── 색상 토큰 ─── */
 const C = {
-  navyDark:   '#0F2137',   // 푸터, 가장 진한 남색
-  navy:       '#1B3A5F',   // 메인 남색
-  navyMid:    '#2C5282',   // 그래디언트 중간
-  navyLight:  '#3B7DD8',   // 호버 링크
-  goldDark:   '#D4A017',   // 골드 – 메인 어센트
-  gold:       '#E8C547',   // 버튼, 강조
-  goldLight:  '#F0D76B',   // 히어로 소제목, 태그 강조
-  goldPale:   '#FFF8E1',   // 섹션 배경 강조
-  sectionBg:  '#F0F3F7',   // 약간 남색 기미 회색
-  textMain:   '#1a2636',   // 메인 텍스트
-  textSub:    '#5a6a7a',   // 부분 텍스트
-  textLight:  '#8898a8',   // 연한 텍스트
+  navyDark:   '#0f1a45',   // 푸터, 가장 진한 파란색
+  navy:       '#21388e',   // 메인 파란색 (로고)
+  navyMid:    '#2d4ba3',   // 그래디언트 중간
+  navyLight:  '#4a6bc4',   // 호버 링크
+  goldDark:   '#e08f00',   // 골드 – 메인 어센트
+  gold:       '#ffab20',   // 버튼, 강조 (로고)
+  goldLight:  '#ffc04d',   // 히어로 소제목, 태그 강조
+  goldPale:   '#fff4e0',   // 섹션 배경 강조
+  sectionBg:  '#eef1f8',   // 약간 파란 기미 회색
+  textMain:   '#121a30',   // 메인 텍스트
+  textSub:    '#4a5574',   // 부분 텍스트
+  textLight:  '#7a86a0',   // 연한 텍스트
   white:      '#FFFFFF',
 };
 
@@ -68,7 +68,7 @@ const DaehanSpecialtyOil = () => {
         background: scrolled ? 'rgba(255,255,255,0.93)' : C.white,
         backdropFilter: scrolled ? 'blur(12px)' : 'none',
                 transition: 'all 0.35s',
-        boxShadow: scrolled ? '0 2px 16px rgba(15,33,55,0.08)' : 'none',
+        boxShadow: scrolled ? '0 2px 16px rgba(33,56,142,0.08)' : 'none',
       }}>
         <nav style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '80px' }}>
 
@@ -94,7 +94,7 @@ const DaehanSpecialtyOil = () => {
                 {activeMenu === idx && (
                   <div style={{
                     position: 'absolute', top: '100%', left: '50%', transform: 'translateX(-50%)',
-                    background: C.white, boxShadow: '0 8px 28px rgba(15,33,55,0.12)',
+                    background: C.white, boxShadow: '0 8px 28px rgba(33,56,142,0.12)',
                     padding: '12px 0', minWidth: '200px',
                     borderTop: `3px solid ${C.gold}`,
                     borderRadius: '0 0 6px 6px',
@@ -173,11 +173,11 @@ const DaehanSpecialtyOil = () => {
                   padding: '15px 34px', fontSize: '15px', fontWeight: '700',
                   borderRadius: '5px', cursor: 'pointer',
                   display: 'inline-flex', alignItems: 'center', gap: '10px',
-                  transition: 'all 0.3s', boxShadow: '0 4px 14px rgba(232,197,71,0.35)',
+                  transition: 'all 0.3s', boxShadow: '0 4px 14px rgba(255,171,32,0.35)',
                   textShadow: 'none',
                 }}
-                  onMouseEnter={e => { e.currentTarget.style.background = C.goldLight; e.currentTarget.style.boxShadow = '0 6px 20px rgba(232,197,71,0.45)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
-                  onMouseLeave={e => { e.currentTarget.style.background = C.gold;      e.currentTarget.style.boxShadow = '0 4px 14px rgba(232,197,71,0.35)'; e.currentTarget.style.transform = 'translateY(0)'; }}
+                  onMouseEnter={e => { e.currentTarget.style.background = C.goldLight; e.currentTarget.style.boxShadow = '0 6px 20px rgba(255,171,32,0.45)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
+                  onMouseLeave={e => { e.currentTarget.style.background = C.gold;      e.currentTarget.style.boxShadow = '0 4px 14px rgba(255,171,32,0.35)'; e.currentTarget.style.transform = 'translateY(0)'; }}
                 >
                   네이버 스토어 바로가기 <ArrowRight size={17} />
                 </button>
@@ -206,14 +206,14 @@ const DaehanSpecialtyOil = () => {
             style={{
               position: 'absolute', [i === 0 ? 'left' : 'right']: '24px', top: '50%',
               transform: 'translateY(-50%)',
-              background: 'rgba(15,33,55,0.35)', backdropFilter: 'blur(8px)',
+              background: 'rgba(33,56,142,0.35)', backdropFilter: 'blur(8px)',
               border: '1px solid rgba(255,255,255,0.2)',
               width: '52px', height: '52px', borderRadius: '50%',
               cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
               zIndex: 20, opacity: isHoveringSlider ? 1 : 0, transition: 'all 0.3s', color: C.white,
             }}
-            onMouseEnterCapture={e => e.currentTarget.style.background = 'rgba(27,58,95,0.6)'}
-            onMouseLeaveCapture={e => e.currentTarget.style.background = 'rgba(15,33,55,0.35)'}
+            onMouseEnterCapture={e => e.currentTarget.style.background = 'rgba(33,56,142,0.6)'}
+            onMouseLeaveCapture={e => e.currentTarget.style.background = 'rgba(33,56,142,0.35)'}
           >
             <ChevronDown size={24} style={{ transform: `rotate(${btn.rot})` }} />
           </button>
@@ -238,17 +238,17 @@ const DaehanSpecialtyOil = () => {
               <div key={idx} style={{
                 background: C.white, borderRadius: '10px', padding: '38px 30px',
                 transition: 'all 0.3s', cursor: 'pointer',
-                border: `1px solid #dce5ee`,
+                border: `1px solid #d4daf0`,
                 position: 'relative', overflow: 'hidden',
               }}
-                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-6px)'; e.currentTarget.style.boxShadow = '0 14px 36px rgba(15,33,55,0.1)'; e.currentTarget.style.borderColor = C.navy; e.currentTarget.querySelector('.svc-bar').style.height = '100%'; }}
-                onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)';  e.currentTarget.style.boxShadow = 'none';                                e.currentTarget.style.borderColor = '#dce5ee'; e.currentTarget.querySelector('.svc-bar').style.height = '0%'; }}
+                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-6px)'; e.currentTarget.style.boxShadow = '0 14px 36px rgba(33,56,142,0.1)'; e.currentTarget.style.borderColor = C.navy; e.currentTarget.querySelector('.svc-bar').style.height = '100%'; }}
+                onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)';  e.currentTarget.style.boxShadow = 'none';                                e.currentTarget.style.borderColor = '#d4daf0'; e.currentTarget.querySelector('.svc-bar').style.height = '0%'; }}
               >
                 {/* 좌측 골드 바 */}
                 <div className="svc-bar" style={{ position: 'absolute', top: 0, left: 0, width: '4px', height: '0%', background: `linear-gradient(to bottom, ${C.navyMid})`, transition: 'height 0.4s ease' }} />
 
                 {/* 아이콘 원 배경 */}
-                <div style={{ width: '72px', height: '72px', borderRadius: '50%', background: `linear-gradient(135deg, ${C.goldPale}, #fff3cc)`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: C.navy, marginBottom: '22px' }}>
+                <div style={{ width: '72px', height: '72px', borderRadius: '50%', background: `linear-gradient(135deg, ${C.goldPale}, #ffe8c2)`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: C.navy, marginBottom: '22px' }}>
                   {svc.icon}
                 </div>
                 <h3 style={{ fontSize: '20px', fontWeight: '700', marginBottom: '10px', color: C.textMain }}>{svc.title}</h3>
@@ -285,12 +285,12 @@ const DaehanSpecialtyOil = () => {
                 cursor: 'pointer', transition: 'transform 0.3s, box-shadow 0.3s',
                 position: 'relative', overflow: 'hidden',
               }}
-                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-5px)'; e.currentTarget.style.boxShadow = '0 16px 40px rgba(15,33,55,0.25)'; }}
+                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-5px)'; e.currentTarget.style.boxShadow = '0 16px 40px rgba(33,56,142,0.25)'; }}
                 onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)';  e.currentTarget.style.boxShadow = 'none'; }}
               >
                 {/* 우측 상단 골드 원 장식 */}
-                <div style={{ position: 'absolute', top: '-30px', right: '-30px', width: '120px', height: '120px', borderRadius: '50%', background: `radial-gradient(circle, rgba(232,197,71,0.18) 0%, transparent 70%)` }} />
-                <div style={{ position: 'absolute', bottom: '-20px', left: '-20px', width: '90px', height: '90px', borderRadius: '50%', background: `radial-gradient(circle, rgba(232,197,71,0.1) 0%, transparent 70%)` }} />
+                <div style={{ position: 'absolute', top: '-30px', right: '-30px', width: '120px', height: '120px', borderRadius: '50%', background: `radial-gradient(circle, rgba(255,171,32,0.18) 0%, transparent 70%)` }} />
+                <div style={{ position: 'absolute', bottom: '-20px', left: '-20px', width: '90px', height: '90px', borderRadius: '50%', background: `radial-gradient(circle, rgba(255,171,32,0.1) 0%, transparent 70%)` }} />
 
                 <div style={{ position: 'relative', zIndex: 2 }}>
                   {/* 카드 번호 */}
@@ -302,7 +302,7 @@ const DaehanSpecialtyOil = () => {
                   {prod.tags.map((tag, ti) => (
                     <span key={ti} style={{
                       padding: '6px 15px',
-                      background: 'rgba(232,197,71,0.18)',
+                      background: 'rgba(255,171,32,0.18)',
                       border: `1px solid ${C.gold}`,
                       color: C.goldLight,
                       borderRadius: '20px', fontSize: '13px', fontWeight: '600',
@@ -329,11 +329,11 @@ const DaehanSpecialtyOil = () => {
             ].map((info, idx) => (
               <div key={idx} style={{
                 background: C.white, padding: '36px 24px', borderRadius: '10px',
-                textAlign: 'center', border: '1px solid #dce5ee', transition: 'all 0.3s',
+                textAlign: 'center', border: '1px solid #d4daf0', transition: 'all 0.3s',
                 position: 'relative', overflow: 'hidden',
               }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = C.navy; e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(15,33,55,0.1)'; e.currentTarget.querySelector('.info-top').style.background = C.navy; e.currentTarget.querySelector('.info-label').style.color = C.navy; }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = '#dce5ee'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; e.currentTarget.querySelector('.info-top').style.background = C.gold; e.currentTarget.querySelector('.info-label').style.color = C.gold; }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = C.navy; e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(33,56,142,0.1)'; e.currentTarget.querySelector('.info-top').style.background = C.navy; e.currentTarget.querySelector('.info-label').style.color = C.navy; }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = '#d4daf0'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; e.currentTarget.querySelector('.info-top').style.background = C.gold; e.currentTarget.querySelector('.info-label').style.color = C.gold; }}
               >
                 {/* 상단 라인 */}
                 <div className="info-top" style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '3px', background: C.gold, transition: 'background 0.3s' }} />
@@ -362,21 +362,21 @@ const DaehanSpecialtyOil = () => {
               <div key={idx} style={{
                 textAlign: 'center', padding: '40px 28px',
                 background: C.sectionBg, borderRadius: '10px',
-                border: '1px solid #dce5ee', transition: 'all 0.35s',
+                border: '1px solid #d4daf0', transition: 'all 0.35s',
               }}
                 onMouseEnter={e => {
                   e.currentTarget.style.background = C.navy;
                   e.currentTarget.style.borderColor = C.navy;
                   e.currentTarget.style.transform = 'translateY(-4px)';
-                  e.currentTarget.style.boxShadow = '0 12px 32px rgba(15,33,55,0.2)';
-                  e.currentTarget.querySelector('.con-icon').style.background = 'rgba(232,197,71,0.2)';
+                  e.currentTarget.style.boxShadow = '0 12px 32px rgba(33,56,142,0.2)';
+                  e.currentTarget.querySelector('.con-icon').style.background = 'rgba(255,171,32,0.2)';
                   e.currentTarget.querySelector('.con-icon').style.color = C.gold;
                   e.currentTarget.querySelector('.con-title').style.color = C.white;
                   e.currentTarget.querySelector('.con-text').style.color = 'rgba(255,255,255,0.8)';
                 }}
                 onMouseLeave={e => {
                   e.currentTarget.style.background = C.sectionBg;
-                  e.currentTarget.style.borderColor = '#dce5ee';
+                  e.currentTarget.style.borderColor = '#d4daf0';
                   e.currentTarget.style.transform = 'translateY(0)';
                   e.currentTarget.style.boxShadow = 'none';
                   e.currentTarget.querySelector('.con-icon').style.background = C.goldPale;
