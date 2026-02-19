@@ -73,7 +73,7 @@ const DaehanSpecialtyOil = () => {
         <nav style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '80px' }}>
 
           {/* 로고 */}
-          <a href="/" style={{ display: 'flex', alignItems: 'center' }}>
+          <a href={BASE} style={{ display: 'flex', alignItems: 'center' }}>
             <img src={`${BASE}images/logo.png`} alt="대한특수유 로고" style={{ height: '120px', width: 'auto' }} />
           </a>
 
