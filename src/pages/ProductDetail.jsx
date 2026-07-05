@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ChevronLeft, Phone, MessageSquare, Check, ExternalLink } from 'lucide-react';
+import { ChevronLeft, Phone, MessageSquare, Check, ExternalLink, X } from 'lucide-react';
 import PageBanner from '../components/PageBanner';
 import ProductThumb from '../components/ProductThumb';
 import { getProduct } from '../data/products';
@@ -159,30 +159,64 @@ const SpecBlock = ({ block }) => (
     {block.intro && <p style={{ fontSize: '15px', color: C.textSub, lineHeight: '1.9', marginBottom: '36px' }}>{block.intro}</p>}
 
     {block.features?.length > 0 && (
-      <div style={{ marginBottom: '36px' }}>
+      <div style={{ marginBottom: '32px' }}>
         <h3 style={{ fontSize: '18px', fontWeight: '800', color: C.textMain, marginBottom: '18px' }}>특징</h3>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-          {block.features.map((f, i) => (
-            <div key={i} style={{ display: 'flex', gap: '14px', background: C.sectionBg, borderRadius: '12px', padding: '18px 20px' }}>
-              <span style={{ width: '28px', height: '28px', flexShrink: 0, borderRadius: '50%', background: C.navy, color: C.white, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '800', fontSize: '14px' }}>{i + 1}</span>
-              <div>
-                <div style={{ fontSize: '15px', fontWeight: '700', color: C.textMain, marginBottom: '5px' }}>{f.title}</div>
-                <div style={{ fontSize: '14px', color: C.textSub, lineHeight: '1.7' }}>{f.desc}</div>
+        {typeof block.features[0] === 'string' ? (
+          /* 간단한 특징 문구 리스트 */
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '11px' }}>
+            {block.features.map((f, i) => (
+              <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '15px', color: C.textSub, lineHeight: '1.6' }}>
+                <span style={{ width: '22px', height: '22px', marginTop: '1px', borderRadius: '50%', background: C.goldPale, color: C.goldDark, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><Check size={13} /></span>
+                {f}
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        ) : (
+          /* 제목 + 설명이 있는 특징 카드 */
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+            {block.features.map((f, i) => (
+              <div key={i} style={{ display: 'flex', gap: '14px', background: C.sectionBg, borderRadius: '12px', padding: '18px 20px' }}>
+                <span style={{ width: '28px', height: '28px', flexShrink: 0, borderRadius: '50%', background: C.navy, color: C.white, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '800', fontSize: '14px' }}>{i + 1}</span>
+                <div>
+                  <div style={{ fontSize: '15px', fontWeight: '700', color: C.textMain, marginBottom: '5px' }}>{f.title}</div>
+                  <div style={{ fontSize: '14px', color: C.textSub, lineHeight: '1.7' }}>{f.desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    )}
+
+    {block.colors && (
+      <div style={{ marginBottom: '32px' }}>
+        <h3 style={{ fontSize: '18px', fontWeight: '800', color: C.textMain, marginBottom: '12px' }}>색상</h3>
+        <p style={{ fontSize: '15px', color: C.textSub }}>{block.colors}</p>
       </div>
     )}
 
     {block.uses?.length > 0 && (
-      <div>
+      <div style={{ marginBottom: block.cautions?.length > 0 ? '32px' : 0 }}>
         <h3 style={{ fontSize: '18px', fontWeight: '800', color: C.textMain, marginBottom: '16px' }}>용도</h3>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '11px' }}>
           {block.uses.map((u, i) => (
             <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '15px', color: C.textSub, lineHeight: '1.6' }}>
               <span style={{ width: '22px', height: '22px', marginTop: '1px', borderRadius: '50%', background: C.goldPale, color: C.goldDark, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><Check size={13} /></span>
               {u}
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    {block.cautions?.length > 0 && (
+      <div style={{ background: '#fdecec', border: '1px solid #f5c6c6', borderRadius: '12px', padding: '20px 22px' }}>
+        <h3 style={{ fontSize: '16px', fontWeight: '800', color: '#c0392b', marginBottom: '12px' }}>사용 금지</h3>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '9px' }}>
+          {block.cautions.map((c, i) => (
+            <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '9px', fontSize: '14px', color: '#a5342a', lineHeight: '1.6' }}>
+              <X size={15} style={{ flexShrink: 0, marginTop: '2px' }} />
+              {c}
             </div>
           ))}
         </div>
