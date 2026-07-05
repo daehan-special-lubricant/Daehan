@@ -103,7 +103,9 @@ const ProductDetail = () => {
           </div>
 
           {product.info && <InfoTable info={product.info} />}
-          {product.detailImages && <DetailImages images={product.detailImages} extraFrom={product.extraFrom} />}
+          {product.detailBlocks
+            ? <DetailBlocks blocks={product.detailBlocks} />
+            : product.detailImages && <DetailImages images={product.detailImages} extraFrom={product.extraFrom} />}
         </div>
       </section>
     </>
@@ -144,6 +146,65 @@ const DetailImages = ({ images, extraFrom }) => (
         <img src={src} alt={`상세 이미지 ${i + 1}`} loading="lazy" style={{ display: 'block', width: '100%' }} />
       </React.Fragment>
     ))}
+  </div>
+);
+
+/* 텍스트 상세 블록 (제품명·설명·특징·용도) */
+const SpecBlock = ({ block }) => (
+  <div style={{ padding: '48px 0' }}>
+    <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px', flexWrap: 'wrap', marginBottom: '18px' }}>
+      <h2 style={{ fontSize: '28px', fontWeight: '800', color: C.textMain, letterSpacing: '-0.5px' }}>{block.name}</h2>
+      {block.weight && <span style={{ background: C.goldPale, color: C.goldDark, fontSize: '14px', fontWeight: '700', padding: '5px 14px', borderRadius: '20px' }}>{block.weight}</span>}
+    </div>
+    {block.intro && <p style={{ fontSize: '15px', color: C.textSub, lineHeight: '1.9', marginBottom: '36px' }}>{block.intro}</p>}
+
+    {block.features?.length > 0 && (
+      <div style={{ marginBottom: '36px' }}>
+        <h3 style={{ fontSize: '18px', fontWeight: '800', color: C.textMain, marginBottom: '18px' }}>특징</h3>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+          {block.features.map((f, i) => (
+            <div key={i} style={{ display: 'flex', gap: '14px', background: C.sectionBg, borderRadius: '12px', padding: '18px 20px' }}>
+              <span style={{ width: '28px', height: '28px', flexShrink: 0, borderRadius: '50%', background: C.navy, color: C.white, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '800', fontSize: '14px' }}>{i + 1}</span>
+              <div>
+                <div style={{ fontSize: '15px', fontWeight: '700', color: C.textMain, marginBottom: '5px' }}>{f.title}</div>
+                <div style={{ fontSize: '14px', color: C.textSub, lineHeight: '1.7' }}>{f.desc}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    {block.uses?.length > 0 && (
+      <div>
+        <h3 style={{ fontSize: '18px', fontWeight: '800', color: C.textMain, marginBottom: '16px' }}>용도</h3>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '11px' }}>
+          {block.uses.map((u, i) => (
+            <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '15px', color: C.textSub, lineHeight: '1.6' }}>
+              <span style={{ width: '22px', height: '22px', marginTop: '1px', borderRadius: '50%', background: C.goldPale, color: C.goldDark, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><Check size={13} /></span>
+              {u}
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+);
+
+/* 상세 = 이미지 + 텍스트 블록 혼합 */
+const DetailBlocks = ({ blocks }) => (
+  <div style={{ maxWidth: '860px', margin: '70px auto 0' }}>
+    {blocks.map((b, i) => {
+      if (b.type === 'image') {
+        return (
+          <div key={i}>
+            {b.caption && <div style={{ textAlign: 'center', fontSize: '15px', fontWeight: '700', color: C.navy, margin: '40px 0 16px' }}>{b.caption}</div>}
+            <img src={b.src} alt={b.caption || `상세 이미지 ${i + 1}`} loading="lazy" style={{ display: 'block', width: '100%' }} />
+          </div>
+        );
+      }
+      return <SpecBlock key={i} block={b} />;
+    })}
   </div>
 );
 
