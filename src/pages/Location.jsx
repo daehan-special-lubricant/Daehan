@@ -5,7 +5,7 @@ import C from '../colors';
 
 const Location = () => (
   <>
-    <PageBanner title="오시는 길" subtitle="LOCATION" breadcrumb="Company > 오시는 길" />
+    <PageBanner title="오시는 길" breadcrumb="오시는 길" />
 
     <section style={{ padding: '100px 40px', background: C.white }}>
       <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
@@ -35,13 +35,10 @@ const Location = () => (
             { icon: <Mail size={28} />,   title: '이메일', content: 'gun029@hanmail.net' },
             { icon: <Clock size={28} />,  title: '운영시간', content: '평일 09:00 – 18:00\n토·일 09:00 – 18:00\n(공휴일 휴무)' },
           ].map((item, idx) => (
-            <div key={idx} style={{
-              background: C.sectionBg, borderRadius: '12px', padding: '36px 28px',
-              textAlign: 'center', border: '1px solid #d4daf0', transition: 'all 0.3s',
-            }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = C.navy; e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(33,56,142,0.1)'; }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor = '#d4daf0'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; }}
-            >
+            <div key={idx} className="soft-card" style={{
+              background: C.white, borderRadius: '14px', padding: '36px 28px',
+              textAlign: 'center', border: `1px solid ${C.border}`,
+            }}>
               <div style={{ width: '60px', height: '60px', borderRadius: '50%', background: C.goldPale, color: C.navy, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 18px' }}>
                 {item.icon}
               </div>

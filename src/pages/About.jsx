@@ -4,7 +4,7 @@ import C from '../colors';
 
 const About = () => (
   <>
-    <PageBanner title="회사 소개 / 인사말" subtitle="COMPANY" breadcrumb="Company > 회사 소개 / 인사말" />
+    <PageBanner title="회사 소개 / 인사말" breadcrumb="회사 소개" />
 
     <section style={{ padding: '100px 40px', background: C.white }}>
       <div style={{ maxWidth: '1000px', margin: '0 auto' }}>

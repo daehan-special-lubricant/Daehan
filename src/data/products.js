@@ -1,0 +1,503 @@
+/*
+ * 대한특수유 스토어 상품 카탈로그.
+ * 별도 이미지 자산 없이도 일관된 룩을 위해 각 상품에 브랜드 계열 그라디언트(color)를 부여한다.
+ * price(원) / points(P) 는 포인트 결제 데모용 수치이다.
+ */
+
+const B = import.meta.env.BASE_URL;
+
+const products = [
+  {
+    id: 'silicone-glitter-300',
+    name: '플루브 글리터 실라인 300㎖',
+    category: '실리콘',
+    price: 5850,
+    points: 5850,
+    unit: '300㎖',
+    color: ['#12235e', '#2d4ba3'],
+    retail: true,                 // 스마트스토어에서 실제 판매 중인 소매 상품
+    storeUrl: '',                 // 스마트스토어 상품 URL (입력 시 구매 버튼 노출)
+    image: `${B}images/Silicon/glitter/Glitter.png`,   // 대표 상품 사진
+    desc: '반짝이는 펄감으로 럭셔리한 공간을 연출하는 실내 인테리어 전용 글리터 실리콘 실란트. 곰팡이 방지제를 함유해 항균에 강하고, 누구나 쉽고 간편하게 시공할 수 있습니다.',
+    tags: ['항균·곰팡이 방지', '초간단 시공', '반영구 사용', '글리터 인테리어'],
+    // 상품정보 — 상세 맨 앞에 표로 표시
+    info: [
+      { label: '상품번호', value: '11250279073' },
+      { label: '제조사',   value: '이누' },
+      { label: '브랜드',   value: '모네스페스' },
+      { label: '모델명',   value: '플루브 바이오 글리터 실라인 반짝이 펄실리콘 300ml' },
+      { label: '원산지',   value: '국산' },
+    ],
+    // 상세설명 이미지 (스마트스토어 상세페이지). extraFrom 이후는 '추가상품'.
+    detailImages: [
+      `${B}images/Silicon/glitter/s1.jpg`,
+      `${B}images/Silicon/glitter/s2.jpg`,
+      `${B}images/Silicon/glitter/s3.jpg`,
+      `${B}images/Silicon/glitter/s4.jpg`,
+      `${B}images/Silicon/glitter/s5.jpg`,
+      `${B}images/Silicon/glitter/s6.jpg`,
+      `${B}images/Silicon/glitter/s7.jpg`,
+      `${B}images/Silicon/glitter/s8.jpg`,
+      `${B}images/Silicon/glitter/s9.jpg`,
+      `${B}images/Silicon/glitter/s10.jpg`,
+      `${B}images/Silicon/glitter/s11.jpg`,
+    ],
+    extraFrom: 9,   // s10(인덱스 9)부터는 '추가상품' — s9 다음에 구분선 표시
+  },
+  {
+    id: 'silicone-sr3300',
+    name: '대흥 SR3300 내열용 실리콘 (보일러·방화용)',
+    category: '실리콘',
+    unit: '튜브·카트리지형',
+    color: ['#12235e', '#2d4ba3'],
+    retail: true,
+    storeUrl: '',
+    image: `${B}images/Silicon/SR3300/SR3300.png`,   // 대표 상품 사진
+    desc: '고열·방화 환경에 사용하는 내열 실리콘 실란트입니다. 보일러·난방 배관 등 높은 온도가 발생하는 부위의 마감·실링에 적합하며, 튜브형과 카트리지형 두 가지로 제공됩니다.',
+    tags: ['내열·고열용', '보일러·난방 배관', '방화 실링', '튜브형·카트리지형'],
+    info: [
+      { label: '상품번호', value: '12311421998' },
+      { label: '제조사',   value: '대흥화학공업' },
+      { label: '브랜드',   value: '대흥화학공업' },
+      { label: '모델명',   value: '대흥 내열실리콘 보일러 난방 배관 다우 오공 SR3300' },
+      { label: '원산지',   value: '국산' },
+    ],
+    detailImages: [
+      `${B}images/Silicon/SR3300/SR3300_1.jpg`,
+      `${B}images/Silicon/SR3300/SR3300_2.jpg`,
+      `${B}images/Silicon/SR3300/SR3300_3.jpg`,
+      `${B}images/Silicon/SR3300/SR3300_4.jpg`,
+    ],
+  },
+  {
+    id: 'silicone-ss792',
+    name: '닥터씰 외장용 실리콘 SS792 (비오염성)',
+    category: '실리콘',
+    unit: '카트리지형',
+    color: ['#12235e', '#2d4ba3'],
+    retail: true,
+    storeUrl: '',
+    image: `${B}images/Silicon/SS792/SS792.png`,   // 대표 상품 사진
+    desc: '각종 외장재 조인트 실링에 적합한 다목적 고기능성 외장용 실리콘입니다. 탁월한 내후·내구성과 비오염성을 갖추고, 대부분의 자재에 프라이머 없이 우수한 접착력을 발휘합니다.',
+    tags: ['외장용', '비오염성', '프라이머리스 접착', '렉산·커튼월'],
+    info: [
+      { label: '상품번호', value: '12277010901' },
+      { label: '제조사',   value: '원익큐브' },
+      { label: '원산지',   value: '국산' },
+    ],
+    detailBlocks: [
+      { type: 'image', src: `${B}images/Silicon/SS792/SS792_1.jpg` },
+      {
+        type: 'spec',
+        name: '닥터씰 외장용실리콘 SS792 흑색',
+        intro: 'SS792 제품은 각종 외장재 조인트 실링에 적합하게 고안된 제품입니다. 탁월한 내후·내구성을 가지고 있으며, 대부분의 자재에 프라이머 없이 우수한 접착력을 발현하는 다목적 고기능성 제품입니다.',
+        features: [
+          '우수한 내열·내한성',
+          '우수한 내후·내구성',
+          '다양한 자재에 프라이머 없이 우수한 접착력 발휘',
+        ],
+        colors: '백색, 회색, 투명, 밤색, 흑색',
+        uses: [
+          '외장 판넬, 금속, 플라스틱, 목재 등의 접착',
+          '렉산(폴리카보네이트) 실링',
+          '알루미늄 커튼월 판넬 조인트',
+          '웨더씰(Weather Sealing)',
+        ],
+      },
+      { type: 'image', src: `${B}images/Silicon/SS792/SS792_2.jpg`, caption: '물성' },
+    ],
+  },
+  {
+    id: 'silicone-m6',
+    name: '닥터씰 M6 변성우레탄 하이브리드 방수 실란트 (백색/회색)',
+    category: '실리콘',
+    unit: '카트리지형',
+    color: ['#12235e', '#2d4ba3'],
+    retail: true,
+    storeUrl: '',
+    image: `${B}images/Silicon/M6/m6.jpg`,   // 대표 상품 사진
+    desc: '중화경화형 저모듈러스 변성실리콘으로, 수성페인트 도장이 가능하며 각종 건축물의 실내·외 방수 및 보수 전용으로 설계된 고기능 하이브리드 실란트입니다.',
+    tags: ['변성우레탄 하이브리드', '외벽 방수', '도장 가능', '프라이머리스 접착'],
+    info: [
+      { label: '상품번호', value: '12253630991' },
+      { label: '원산지',   value: '국산' },
+    ],
+    detailBlocks: [
+      { type: 'image', src: `${B}images/Silicon/M6/m6.jpg` },
+      {
+        type: 'spec',
+        name: '닥터씰 M6 변성우레탄 하이브리드 방수 실란트',
+        intro: 'M6는 중화경화형 저모듈러스 변성실리콘으로, 수성페인트에 도장이 가능하며 각종 건축물의 실내·외 방수 및 보수 전용으로 설계된 고기능 제품입니다.',
+        features: [
+          '다양한 소재에 프라이머 없이도 우수한 부착력',
+          '수성페인트에 우수한 도장력',
+          '사용이 간편한 1액형의 상온 경화형',
+          '압출성이 좋아 작업이 수월',
+          '내후성·내구성이 우수하여 -30℃~90℃에서 유연한 탄성을 유지',
+        ],
+        colors: '백색, 회색',
+        uses: [
+          '건축물의 실내·외 방수용(옥상/바닥)',
+          '창호 주위 실링 및 보수',
+          '실내·외 균열 보수',
+          '도장성이 요구되는 조인트',
+          '비오염 석재 실링 및 보수',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'silicone-929',
+    name: '닥터씰 929 글레이징용 무초산 반투명 실리콘',
+    category: '실리콘',
+    unit: '카트리지형',
+    color: ['#12235e', '#2d4ba3'],
+    retail: true,
+    storeUrl: '',
+    image: `${B}images/Silicon/929/929_1.jpg`,   // 대표 상품 사진
+    desc: '창문 글레이징 및 건축물의 팽창 연결 조인트에 사용하는 다목적 무초산(중성경화형) 실리콘 실란트입니다. 부식·냄새가 없고 뛰어난 접착성과 시공성을 갖춰 다양한 건축 용도에 사용할 수 있습니다.',
+    tags: ['무초산·중성경화', '글레이징용', '프라이머리스 접착', '반투명'],
+    info: [
+      { label: '상품번호', value: '11966403011' },
+      { label: '제조사',   value: '원익큐브' },
+      { label: '원산지',   value: '국산' },
+    ],
+    detailBlocks: [
+      { type: 'image', src: `${B}images/Silicon/929/929_1.jpg` },
+      { type: 'image', src: `${B}images/Silicon/929/929_2.jpg` },
+      {
+        type: 'spec',
+        name: 'Doctor-Sil 929',
+        intro: 'Doctor-Sil 929 제품은 다목적 실리콘 실란트로, 창문 글레이징 및 건축물의 팽창 연결 조인트에서 사용할 수 있는 무초산 실리콘 실란트입니다. 뛰어난 접착성과 시공성으로 건축물의 다양한 건축 용도로 사용할 수 있습니다.',
+        features: [
+          '다양한 소재에 프라이머 없이 부착력이 우수',
+          '부식과 냄새가 없는 중성경화형',
+          '유리·플라스틱·알루미늄(AL)·나무·콘크리트 등 다양한 피착재에 우수한 접착',
+          '뛰어난 압출성으로 작업이 용이',
+        ],
+        colors: '반투명색',
+        uses: [
+          '하이샷시 글레이징',
+          '알루미늄 샷시 글레이징',
+          '나무창틀 글레이징',
+          '조인트 움직임이 적은 건축자재 조인트 코킹',
+        ],
+        cautions: [
+          '구조용 공법 및 복층유리 제작에 사용 금지',
+          '수중 침적 금지',
+          '다중이용시설 또는 공동주택(100세대 이상)의 실내에 사용 금지',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'silicone-bio',
+    name: '닥터실 바이오E 항균 실리콘 (곰팡이 방지·백색)',
+    category: '실리콘',
+    unit: '카트리지형',
+    color: ['#12235e', '#2d4ba3'],
+    retail: true,
+    storeUrl: '',
+    image: `${B}images/Silicon/Bio/bio.jpg`,   // 대표 상품 사진
+    desc: '곰팡이 방지제를 함유해 고온 다습한 환경에 적합한 항균 바이오 실리콘입니다. 샤워장·화장실·타일 줄눈 등 곰팡이가 우려되는 부위 실링에 적합하며, 냄새가 적어 실내 작업이 용이합니다.',
+    tags: ['곰팡이 방지·항균', '중성경화 1액형', '욕실 전용', '백색'],
+    info: [
+      { label: '상품번호', value: '11655880244' },
+      { label: '제조사',   value: '원익큐브' },
+      { label: '브랜드',   value: '닥터실' },
+      { label: '원산지',   value: '국산' },
+    ],
+    detailBlocks: [
+      { type: 'image', src: `${B}images/Silicon/Bio/bio.jpg` },
+      {
+        type: 'spec',
+        name: '바이오E 항균 실리콘',
+        intro: '이 제품은 곰팡이 방지제가 함유되어 있어 고온 다습한 환경에 적합하며, 샤워장·화장실·파이프 공사 타일 줄눈 또는 외부 시공 시 곰팡이 문제가 예상되는 부위에 적합한 제품입니다.',
+        features: [
+          '냄새가 적어 욕실 내 작업이 용이',
+          '곰팡이 억제제가 함유되어 있어 고온 다습한 환경에 적합',
+          '대부분의 욕실 재료에 뛰어난 접착력을 발휘',
+          '우수한 내열·내한성, 중성경화 1액형으로 압출성이 좋아 작업이 용이',
+        ],
+        colors: '백색',
+        uses: [
+          '세면대, 화장실, 샤워장 등 욕실 주위',
+          '파이프 공사 타일 줄눈',
+          '고온 다습한 곳 등 곰팡이 방지 부위',
+          '욕조의 고정 및 틈새 실링',
+          '배관 주위 PVC 등 거울·유리 실링',
+        ],
+      },
+      { type: 'image', src: `${B}images/Silicon/Bio/bio_2.jpg`, caption: '물성' },
+    ],
+  },
+  {
+    id: 'silicone-nozzle',
+    name: '실리콘 노즐 (카트리지용 일반·우레탄변성)',
+    category: '실리콘',
+    unit: '카트리지용',
+    color: ['#12235e', '#2d4ba3'],
+    retail: true,
+    storeUrl: '',
+    image: `${B}images/Silicon/Nozzle/nozzle_2.jpg`,   // 대표 상품 사진
+    desc: '카트리지형 실리콘·우레탄 시공에 사용하는 노즐(꼭지)입니다. 일반형과 우레탄변성용을 포함하며, 사선으로 커팅해 토출량을 조절할 수 있습니다.',
+    tags: ['카트리지용', '일반 노즐', '우레탄변성 노즐', '토출량 조절'],
+    info: [
+      { label: '상품번호', value: '11626663068' },
+      { label: '원산지',   value: '국산' },
+    ],
+    detailImages: [
+      `${B}images/Silicon/Nozzle/nozzle_1.jpg`,
+      `${B}images/Silicon/Nozzle/nozzle_2.jpg`,
+      `${B}images/Silicon/Nozzle/nozzle_3.jpg`,
+      `${B}images/Silicon/Nozzle/nozzle_4.jpg`,
+    ],
+  },
+  {
+    id: 'silicone-topseal-nx',
+    name: '탑씰 탑프라 Neutral-X 무초산 범용 실리콘 (백색/회색/흑색/아이보리)',
+    category: '실리콘',
+    unit: '카트리지형',
+    color: ['#12235e', '#2d4ba3'],
+    retail: true,
+    storeUrl: '',
+    image: `${B}images/Silicon/TopSeal/topseal_1.jpg`,   // 대표 상품 사진
+    desc: '무초산(비초산·중성경화) 범용 실리콘 실란트입니다. 냄새·부식이 적어 창호·몰딩·걸레받이 등 실내·외 마감과 방수 실링에 폭넓게 사용할 수 있습니다.',
+    tags: ['무초산·비초산', '중성경화 범용', '창호·몰딩', '실내·외 겸용'],
+    info: [
+      { label: '상품번호', value: '11296086599' },
+      { label: '모델명',   value: '탑씰 뉴트럴-X 일반 무초산 비초산 범용 실리콘 탑프라 NX 뉴트럴엑스 창호 걸레받이 몰딩 실내' },
+      { label: '원산지',   value: '국산' },
+    ],
+    detailImages: [
+      `${B}images/Silicon/TopSeal/topseal_1.jpg`,
+      `${B}images/Silicon/TopSeal/topseal_2.jpg`,
+      `${B}images/Silicon/TopSeal/topseal_3.jpg`,
+      `${B}images/Silicon/TopSeal/topseal_4.jpg`,
+    ],
+  },
+  {
+    id: 'brake-fluid-dot3',
+    name: '에이원케미칼 브레이크액 0.8L (DOT-3)',
+    category: '기타',
+    unit: '0.8L',
+    color: ['#12235e', '#2d4ba3'],
+    retail: true,
+    storeUrl: '',
+    image: `${B}images/BreakOil/breakoil_0.8L.jpg`,   // 대표 상품 사진
+    desc: '높은 끓는점과 낮은 증발 특성으로 사용 중에도 높은 안전성을 유지하는 고품질 브레이크액입니다. KS 표준(KS M 2141)에 적합하며, 특수첨가제 함유로 금속·고무 계통을 보호합니다. (DOT-3 규격 · DOT-4 차량에는 사용 불가)',
+    tags: ['DOT-3 규격 인증', '낮은 증발성', 'KS M 2141', '금속·고무 보호'],
+    info: [
+      { label: '상품번호', value: '11296218325' },
+      { label: '제조사',   value: '에이원케미칼' },
+      { label: '브랜드',   value: '에이원케미칼' },
+      { label: '원산지',   value: '국산' },
+      { label: '종류',     value: 'DOT3' },
+      { label: '오일구분', value: '합성' },
+    ],
+    detailImages: [
+      `${B}images/BreakOil/breakoil_0.8L.jpg`,
+      `${B}images/BreakOil/breakoil_0.8L_2.jpg`,
+    ],
+  },
+  {
+    id: 'brake-fluid-dot4-1l',
+    name: '브레이크액 1L (DOT-4)',
+    category: '기타',
+    unit: '1L',
+    color: ['#12235e', '#2d4ba3'],
+    retail: true,
+    storeUrl: '',
+    image: `${B}images/BreakOil/breakoil_1L.jpg`,   // 대표 상품 사진
+    desc: 'DOT-4 규격의 고성능 브레이크액입니다. 높은 끓는점(ERBP ≥ 246℃)으로 반복 제동·고온 환경에서도 안정적인 제동 성능을 유지하며, KS M 2141 및 SAE J1704 / FMVSS No.116 기준에 적합합니다.',
+    tags: ['DOT-4 규격', 'KS M 2141', '높은 끓는점(ERBP≥246℃)', 'SAE J1704 · FMVSS 116'],
+    info: [
+      { label: '상품번호', value: '13396656839' },
+      { label: '원산지',   value: '국산' },
+    ],
+    detailImages: [
+      `${B}images/BreakOil/breakoil_1L.jpg`,
+      `${B}images/BreakOil/breakoil_1L_2.jpg`,
+      `${B}images/BreakOil/breakoil_1L_3.jpg`,
+    ],
+  },
+  {
+    id: 'tapping-fluid-st501',
+    name: '이레산업 스피드탭 탭핑유 450㎖ (ST-501)',
+    category: '기타',
+    unit: '450㎖',
+    color: ['#12235e', '#2d4ba3'],
+    retail: true,
+    storeUrl: '',
+    image: `${B}images/Tapping/tapping.jpg`,   // 대표 상품 사진
+    desc: '금속 가공 전 공정에 사용하는 친환경 대체용제 탭핑유입니다. 드릴·탭핑·밀링·보링·리밍·브로칭 등 다양한 금속 가공 작업에서 우수한 윤활·냉각 성능을 제공합니다.',
+    tags: ['친환경 대체용제', '드릴·탭핑·밀링', '보링·리밍·브로칭', 'Speed Tap ST-501'],
+    info: [
+      { label: '상품번호', value: '13418147381' },
+      { label: '제조사',   value: '이레산업' },
+      { label: '브랜드',   value: '이레산업' },
+      { label: '원산지',   value: '국산' },
+    ],
+    detailImages: [
+      `${B}images/Tapping/tapping.jpg`,
+      `${B}images/Tapping/tapping2.jpg`,
+    ],
+  },
+  {
+    id: 'longlife-coolant-3l',
+    name: '에이원케미칼 롱라이프 부동액 3L',
+    category: '부동액',
+    unit: '3L',
+    color: ['#12235e', '#2d4ba3'],
+    retail: true,
+    storeUrl: '',
+    image: `${B}images/LongLife/longlife.jpg`,   // 대표 상품 사진
+    desc: '순정원료로 만든 사계절용 자동차 부동액(냉각수)입니다. 뛰어난 부식방지 효과와 냉각시스템 보호 성능을 제공하며, 현대·기아·대우·쌍용 등 전차종에 사용할 수 있습니다. (KS M 2142 · 10년 또는 200,000km · 알루미늄 라디에이터 겸용)',
+    tags: ['KS M 2142 정품', '순정원료', '부식 방지·냉각 보호', '전차종 사계절'],
+    info: [
+      { label: '상품번호', value: '13636440418' },
+      { label: '원산지',   value: '국산' },
+    ],
+    detailImages: [
+      `${B}images/LongLife/longlife.jpg`,
+      `${B}images/LongLife/longlife2.jpg`,
+    ],
+  },
+  {
+    id: 'grease-powertech-2000',
+    name: 'MAHA 파워텍 2000 고속 그리스 3kg',
+    category: '윤활유',
+    unit: '3kg',
+    color: ['#0f1a45', '#2d4ba3'],
+    retail: true,
+    storeUrl: '',
+    image: `${B}images/maha/maha.jpg`,   // 대표 상품 사진
+    desc: '고도로 정제된 기유에 리튬 콤플렉스 증주제를 사용한 만능형 고속 그리스입니다. 내수성·기계적 안정성이 우수하고, 충격하중 등 가혹한 조건에서도 뛰어난 윤활 성능을 발휘합니다.',
+    tags: ['리튬 콤플렉스', '고속·만능형', '우수한 내수성', '고온·고하중'],
+    info: [
+      { label: '상품번호', value: '13189689636' },
+      { label: '제조사',   value: '감로' },
+      { label: '브랜드',   value: '감로파인케미칼' },
+      { label: '원산지',   value: '국산' },
+    ],
+    detailBlocks: [
+      { type: 'image', src: `${B}images/maha/maha.jpg` },
+      {
+        type: 'spec',
+        name: 'POWERTECH 2000',
+        weight: '3kg',
+        intro: 'POWERTECH 2000 그리스는 새로운 개념의 만능형 고속 그리스로서, 고도로 정제된 기유에 리튬 콤플렉스 증주제를 사용하고 엄선된 산화방지제·부식방지제·내마모제·극압첨가제를 배합한 고성능 그리스입니다. 물에 대한 저항성과 기계적 안정성이 우수하며, 충격하중을 받는 가혹한 조건에서도 윤활 성능을 발휘하는 최고급 만능형 고속 그리스입니다.',
+        features: [
+          { title: '우수한 기계적 안정성', desc: '기계적 안정성이 우수하여 기계적 하중이 계속 반복되어도 저항력이 크기 때문에, 주도 연화가 적어 그리스가 연화되어 베어링 밖으로 흘러 나오는 현상이 없습니다.' },
+          { title: '우수한 산화안정성', desc: '고도로 정제된 기유를 사용하여 우수한 산화안정성을 가지므로, 장기 보관하거나 고온에서 계속 사용해도 강화되거나 퇴적물을 생성하지 않습니다.' },
+          { title: '우수한 내수성', desc: '내수성이 우수하여 수분의 분무 및 침적에 의한 수세에 충분히 견딜 수 있습니다.' },
+          { title: '우수한 부식방지력', desc: '금속에 대하여 강력한 친화력을 가지고 있으며, 주유된 그리스에 수분이 혼입되더라도 장기간 베어링 표면의 부식을 방지할 수 있습니다.' },
+          { title: '내하중성', desc: '내하중성이 뛰어나 베어링의 마모로 인한 손상을 방지할 수 있습니다.' },
+        ],
+        uses: [
+          '자동차, 트럭 등의 건설장비',
+          '제철·제강 설비, 광산 기계 등의 중장비',
+          '일반 산업용 기계 및 장비',
+          '휠베어링, 평베어링, 볼베어링, 니들베어링 등 각종 베어링 및 조인트 부위',
+        ],
+      },
+      { type: 'image', src: `${B}images/maha/maha2.jpg`, caption: '대표 성상' },
+    ],
+  },
+  {
+    id: 'lub-engine-5w30',
+    name: '프리미엄 엔진오일 5W-30',
+    category: '윤활유',
+    price: 42000,
+    points: 42000,
+    unit: '4L',
+    color: ['#0f1a45', '#2d4ba3'],
+    desc: '고온·고부하 환경에서도 안정적인 유막을 유지하는 합성 엔진오일. 승용·상용 가솔린 엔진에 폭넓게 적용됩니다.',
+    tags: ['고온 안정성', '저마찰', '장수명'],
+  },
+  {
+    id: 'lub-gear-85w140',
+    name: '기어오일 85W-140',
+    category: '윤활유',
+    price: 38000,
+    points: 38000,
+    unit: '4L',
+    color: ['#21388e', '#4a6bc4'],
+    desc: '높은 극압 성능으로 중장비·상용차 기어박스와 차동장치를 보호하는 고점도 기어오일입니다.',
+    tags: ['극압 보호', '내마모', '고점도'],
+  },
+  {
+    id: 'lub-hydraulic-46',
+    name: '유압작동유 ISO VG46',
+    category: '윤활유',
+    price: 55000,
+    points: 55000,
+    unit: '20L',
+    color: ['#0f1a45', '#21388e'],
+    desc: '산화 안정성과 방청 성능이 우수한 산업용 유압작동유. 각종 유압 장비의 응답성과 수명을 높여줍니다.',
+    tags: ['산화 안정', '방청', '산업용'],
+  },
+  {
+    id: 'lub-grease-ep2',
+    name: '다목적 리튬 그리스 EP2',
+    category: '윤활유',
+    price: 18000,
+    points: 18000,
+    unit: '2.5kg',
+    color: ['#e08f00', '#ffab20'],
+    desc: '내수성과 극압성이 뛰어난 리튬 베이스 다목적 그리스. 베어링·조인트 등 광범위한 윤활점에 사용합니다.',
+    tags: ['내수성', '극압', '다목적'],
+  },
+  {
+    id: 'plast-dop',
+    name: '특수 가소제 DOP',
+    category: '가소제',
+    price: 64000,
+    points: 64000,
+    unit: '18kg',
+    color: ['#2d4ba3', '#4a6bc4'],
+    desc: 'PVC 가공에 널리 쓰이는 고순도 범용 가소제. 우수한 상용성과 안정적인 품질을 제공합니다.',
+    tags: ['고순도', '상용성', 'PVC'],
+  },
+  {
+    id: 'plast-eco',
+    name: '친환경 가소제 (Non-Phthalate)',
+    category: '가소제',
+    price: 89000,
+    points: 89000,
+    unit: '18kg',
+    color: ['#21388e', '#2d4ba3'],
+    desc: '프탈레이트를 배제한 친환경 가소제로, 유아용품·식품 포장재 등 안전 기준이 높은 용도에 적합합니다.',
+    tags: ['친환경', '무프탈레이트', '고안전'],
+  },
+  {
+    id: 'special-cutting',
+    name: '수용성 절삭유',
+    category: '기타',
+    price: 47000,
+    points: 47000,
+    unit: '18L',
+    color: ['#0f1a45', '#2d4ba3'],
+    desc: '금속 가공 시 냉각·윤활·방청을 동시에 만족시키는 수용성 절삭유. 공구 수명과 가공 정밀도를 높입니다.',
+    tags: ['냉각', '방청', '가공정밀'],
+  },
+  {
+    id: 'special-rust',
+    name: '방청유 (Rust Preventive)',
+    category: '기타',
+    price: 33000,
+    points: 33000,
+    unit: '18L',
+    color: ['#e08f00', '#ffc04d'],
+    desc: '금속 표면에 얇은 보호막을 형성해 장기 보관·운송 중 부식을 방지하는 방청유입니다.',
+    tags: ['부식 방지', '보호막', '장기보관'],
+  },
+];
+
+export const categories = ['전체', '윤활유', '가소제', '실리콘', '부동액', '기타'];
+
+export const getProduct = (id) => products.find(p => p.id === id);
+
+export const formatWon = (n) => n.toLocaleString('ko-KR') + '원';
+
+export default products;
