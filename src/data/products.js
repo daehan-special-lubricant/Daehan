@@ -52,7 +52,7 @@ const products = [
     color: ['#12235e', '#2d4ba3'],
     retail: true,
     storeUrl: '',
-    image: `${B}images/BreakOil/b1.jpg`,   // 대표 상품 사진
+    image: `${B}images/BreakOil/breakoil_0.8L.jpg`,   // 대표 상품 사진
     desc: '높은 끓는점과 낮은 증발 특성으로 사용 중에도 높은 안전성을 유지하는 고품질 브레이크액입니다. KS 표준(KS M 2141)에 적합하며, 특수첨가제 함유로 금속·고무 계통을 보호합니다. (DOT-3 규격 · DOT-4 차량에는 사용 불가)',
     tags: ['DOT-3 규격 인증', '낮은 증발성', 'KS M 2141', '금속·고무 보호'],
     info: [
@@ -64,8 +64,29 @@ const products = [
       { label: '오일구분', value: '합성' },
     ],
     detailImages: [
-      `${B}images/BreakOil/b1.jpg`,
-      `${B}images/BreakOil/b2.jpg`,
+      `${B}images/BreakOil/breakoil_0.8L.jpg`,
+      `${B}images/BreakOil/breakoil_0.8L_2.jpg`,
+    ],
+  },
+  {
+    id: 'brake-fluid-dot4-1l',
+    name: '브레이크액 1L (DOT-4)',
+    category: '기타',
+    unit: '1L',
+    color: ['#12235e', '#2d4ba3'],
+    retail: true,
+    storeUrl: '',
+    image: `${B}images/BreakOil/breakoil_1L.jpg`,   // 대표 상품 사진
+    desc: 'DOT-4 규격의 고성능 브레이크액입니다. 높은 끓는점(ERBP ≥ 246℃)으로 반복 제동·고온 환경에서도 안정적인 제동 성능을 유지하며, KS M 2141 및 SAE J1704 / FMVSS No.116 기준에 적합합니다.',
+    tags: ['DOT-4 규격', 'KS M 2141', '높은 끓는점(ERBP≥246℃)', 'SAE J1704 · FMVSS 116'],
+    info: [
+      { label: '상품번호', value: '13396656839' },
+      { label: '원산지',   value: '국산' },
+    ],
+    detailImages: [
+      `${B}images/BreakOil/breakoil_1L.jpg`,
+      `${B}images/BreakOil/breakoil_1L_2.jpg`,
+      `${B}images/BreakOil/breakoil_1L_3.jpg`,
     ],
   },
   {
@@ -88,6 +109,26 @@ const products = [
     detailImages: [
       `${B}images/Tapping/tapping.jpg`,
       `${B}images/Tapping/tapping2.jpg`,
+    ],
+  },
+  {
+    id: 'longlife-coolant-3l',
+    name: '에이원케미칼 롱라이프 부동액 3L',
+    category: '부동액',
+    unit: '3L',
+    color: ['#12235e', '#2d4ba3'],
+    retail: true,
+    storeUrl: '',
+    image: `${B}images/LongLife/longlife.jpg`,   // 대표 상품 사진
+    desc: '순정원료로 만든 사계절용 자동차 부동액(냉각수)입니다. 뛰어난 부식방지 효과와 냉각시스템 보호 성능을 제공하며, 현대·기아·대우·쌍용 등 전차종에 사용할 수 있습니다. (KS M 2142 · 10년 또는 200,000km · 알루미늄 라디에이터 겸용)',
+    tags: ['KS M 2142 정품', '순정원료', '부식 방지·냉각 보호', '전차종 사계절'],
+    info: [
+      { label: '상품번호', value: '13636440418' },
+      { label: '원산지',   value: '국산' },
+    ],
+    detailImages: [
+      `${B}images/LongLife/longlife.jpg`,
+      `${B}images/LongLife/longlife2.jpg`,
     ],
   },
   {
@@ -180,7 +221,7 @@ const products = [
   },
 ];
 
-export const categories = ['전체', '윤활유', '가소제', '실리콘', '기타'];
+export const categories = ['전체', '윤활유', '가소제', '실리콘', '부동액', '기타'];
 
 export const getProduct = (id) => products.find(p => p.id === id);
 

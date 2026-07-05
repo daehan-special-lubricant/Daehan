@@ -12,6 +12,7 @@ const menuItems = [
     { label: '윤활유',    path: '/shop?cat=윤활유' },
     { label: '가소제',    path: '/shop?cat=가소제' },
     { label: '실리콘',    path: '/shop?cat=실리콘' },
+    { label: '부동액',    path: '/shop?cat=부동액' },
     { label: '기타',      path: '/shop?cat=기타' },
   ]},
   { title: 'Service', items: [
