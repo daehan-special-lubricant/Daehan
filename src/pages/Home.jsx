@@ -12,14 +12,13 @@ const Home = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const t = setInterval(() => setCurrentSlide(p => (p + 1) % 3), 5000);
+    const t = setInterval(() => setCurrentSlide(p => (p + 1) % 2), 5000);
     return () => clearInterval(t);
   }, []);
 
   const heroSlides = [
     { tag: '1999년 창립', title: '26년의 신뢰,\n대한특수유', desc: '품질과 전문성으로 산업 현장을 지원합니다', bg: `${BASE}images/slide1.jpg`, cta: null },
-    { tag: '도소매 유통', title: '기업부터 개인까지\n윤활유 전문 유통', desc: '도매·소매 모두 가능한 신뢰의 파트너', bg: `${BASE}images/slide2.jpg`, cta: null },
-    { tag: '제품 안내', title: '현장을 위한\n특수유 전문 제품', desc: '윤활유·가소제·실리콘 등 다양한 제품을 한눈에 확인하세요', bg: `${BASE}images/slide3.jpg`, cta: { label: '제품 보러가기', to: '/shop' } },
+    { tag: '제품 안내', title: '현장을 위한\n특수유 전문 제품', desc: '윤활유·가소제·실리콘 등 다양한 제품을 한눈에 확인하세요', bg: `${BASE}images/slide2.jpg`, cta: { label: '제품 보러가기', to: '/shop' } },
   ];
 
   const quickMenu = [
@@ -43,12 +42,10 @@ const Home = () => {
   return (
     <>
       {/* ═══ HERO ═══ */}
-      <section style={{ height: '520px', position: 'relative', overflow: 'hidden', marginTop: '82px' }}>
+      <section style={{ height: '680px', position: 'relative', overflow: 'hidden', marginTop: '82px' }}>
         {heroSlides.map((s, idx) => (
           <div key={idx} style={{ position: 'absolute', inset: 0, opacity: currentSlide === idx ? 1 : 0, transition: 'opacity 0.9s ease-in-out', pointerEvents: currentSlide === idx ? 'auto' : 'none' }}>
             <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${s.bg})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
-            {/* 좌측 스크림 — 텍스트 가독성 (흰색 아님) */}
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(15,26,69,0.55) 0%, rgba(15,26,69,0.2) 45%, rgba(15,26,69,0) 70%)' }} />
             <div style={{ position: 'relative', maxWidth: '1400px', width: '100%', padding: '0 60px', margin: '0 auto', top: '50%', transform: 'translateY(-50%)' }}>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: C.gold, padding: '7px 16px', borderRadius: '30px', marginBottom: '22px' }}>
                 <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: C.navyDark }} />
